@@ -14,8 +14,7 @@ class Matrix {
     Box get(Coord coord) {
         if (Ranges.inRange(coord)) {
             return matrix[coord.x][coord.y];
-        }
-        else return null;
+        } else return null;
     }
 
     void set(Coord coord, Box box) {

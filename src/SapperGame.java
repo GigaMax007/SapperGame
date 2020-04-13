@@ -1,9 +1,10 @@
-import javax.swing.*;
-import java.awt.*;
 import sweeper.Box;
 import sweeper.Coord;
 import sweeper.Game;
 import sweeper.Ranges;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class SapperGame extends JFrame {
     private Game game;
@@ -11,6 +12,7 @@ public class SapperGame extends JFrame {
     private JPanel panel; // создаем переменную типа панель
     private final int COLS = 9; // константа - количество столбцов
     private final int ROWS = 9; // константа - количество строк
+    private final int BOMBS = 10; // константа -  количество бомб всего
     private final int IMAGE_SIZE = 50; // константа - размер картинки
 
     public static void main(String[] args) {
@@ -18,7 +20,7 @@ public class SapperGame extends JFrame {
     }
 
     private SapperGame() {
-        game = new Game(COLS, ROWS);
+        game = new Game(COLS, ROWS, BOMBS);
         game.start();
         setImage();
         initPanel();
@@ -30,7 +32,7 @@ public class SapperGame extends JFrame {
             @Override
             protected void paintComponent(Graphics g) { // перепишем форму, которая отрисовывает нашу форму
                 super.paintComponent(g);
-                for(Coord coord : Ranges.getAllCoords()) {
+                for (Coord coord : Ranges.getAllCoords()) {
                     g.drawImage((Image) game.getBox(coord).image,
                             coord.x * IMAGE_SIZE, coord.y * IMAGE_SIZE, this); // прорисовываем на панели картинку
                 }
@@ -44,17 +46,17 @@ public class SapperGame extends JFrame {
     }
 
     private void initFrame() {
-        pack(); // Изменяет форму так, чтобы в ней всё поместилось
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // Действие по умолчанию при закрытии программы
         setTitle("Sapper Game"); // Указываем заголовок
         setLocationRelativeTo(null); // Устанавливаем окно по центру
         setResizable(false); // Не нужно изменять размер окна
         setVisible(true); // Чтобы форма была видна
         setIconImage(getImage("icon")); // устанавливаем иконку программы
+        pack(); // Изменяет форму так, чтобы в ней всё поместилось
     }
 
     private void setImage() {
-        for (Box box: Box.values()) {
+        for (Box box : Box.values()) {
             box.image = getImage(box.name().toLowerCase());
         }
     }

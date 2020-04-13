@@ -22,12 +22,12 @@ public class Ranges {
         return size;
     }
 
-        public static ArrayList<Coord> getAllCoords() {
+    public static ArrayList<Coord> getAllCoords() {
         return allCoords;
-        }
+    }
 
-        static boolean inRange(Coord coord) {
+    static boolean inRange(Coord coord) {
         return coord.x >= 0 && coord.x < size.x &&
                 coord.y >= 0 && coord.y < size.y;
-        }
+    }
 }
