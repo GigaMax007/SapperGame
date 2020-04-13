@@ -2,9 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import sweeper.Box;
 import sweeper.Coord;
+import sweeper.Game;
 import sweeper.Ranges;
 
 public class SapperGame extends JFrame {
+    private Game game;
+
     private JPanel panel; // создаем переменную типа панель
     private final int COLS = 9; // константа - количество столбцов
     private final int ROWS = 9; // константа - количество строк
@@ -15,7 +18,8 @@ public class SapperGame extends JFrame {
     }
 
     private SapperGame() {
-        Ranges.setSize(new Coord(COLS, ROWS));
+        game = new Game(COLS, ROWS);
+        game.start();
         setImage();
         initPanel();
         initFrame();
@@ -27,7 +31,7 @@ public class SapperGame extends JFrame {
             protected void paintComponent(Graphics g) { // перепишем форму, которая отрисовывает нашу форму
                 super.paintComponent(g);
                 for(Coord coord : Ranges.getAllCoords()) {
-                    g.drawImage((Image) Box.values() [ (coord.x + coord.y) % Box.values().length].image,
+                    g.drawImage((Image) game.getBox(coord).image,
                             coord.x * IMAGE_SIZE, coord.y * IMAGE_SIZE, this); // прорисовываем на панели картинку
                 }
             }
