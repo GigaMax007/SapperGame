@@ -28,6 +28,6 @@ public class Game {
     }
 
     public void pressRightButton(Coord coord) {
-        flag.setFlagToBox(coord);
+        flag.toggleFlagedToBox(coord);
     }
 }
