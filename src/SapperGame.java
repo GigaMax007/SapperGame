@@ -52,7 +52,7 @@ public class SapperGame extends JFrame {
                 if (e.getButton() == MouseEvent.BUTTON3)
                     game.pressRightButton(coord);
                 if (e.getButton() == MouseEvent.BUTTON2)
-                    game.start(); 
+                    game.start();
                 panel.repaint();
             }
         });
@@ -66,11 +66,11 @@ public class SapperGame extends JFrame {
     private void initFrame() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // Действие по умолчанию при закрытии программы
         setTitle("Sapper Game"); // Указываем заголовок
-        setLocationRelativeTo(null); // Устанавливаем окно по центру
         setResizable(false); // Не нужно изменять размер окна
         setVisible(true); // Чтобы форма была видна
         setIconImage(getImage("icon")); // устанавливаем иконку программы
         pack(); // Изменяет форму так, чтобы в ней всё поместилось
+        setLocationRelativeTo(null); // Устанавливаем окно по центру
     }
 
     private void setImage() {
