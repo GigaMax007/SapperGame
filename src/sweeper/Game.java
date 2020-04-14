@@ -30,7 +30,20 @@ public class Game {
     }
 
     public void pressLeftButton(Coord coord) {
-        flag.setOpenedToBox(coord);
+        openBox(coord);
+    }
+
+    private void openBox(Coord coord) {
+        switch (flag.get(coord)) {
+            case OPENED: return;
+            case FLAGED: return;
+            case CLOSED:
+                switch (bomb.get(coord)) {
+                    case ZERO: return;
+                    case BOMB: return;
+                    default  : flag.setOpenedToBox(coord); return;
+                }
+        }
     }
 
     public void pressRightButton(Coord coord) {

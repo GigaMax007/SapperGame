@@ -61,6 +61,7 @@ public class SapperGame extends JFrame {
                     game.pressRightButton(coord);
                 if (e.getButton() == MouseEvent.BUTTON2)
                     game.start();
+                label.setText(getMessage());
                 panel.repaint();
             }
         });
@@ -69,6 +70,15 @@ public class SapperGame extends JFrame {
                 Ranges.getSize().y * IMAGE_SIZE)); // Устанавливаем размер формы
         add(panel); // добавляем панель на форму
 
+    }
+
+    private String getMessage() {
+        switch (game.getGameState()) {
+            case PLAYED: return "Think twice!";
+            case BOMBED: return "YOU LOSE! BIG BA-DA-BOOM!";
+            case WINER : return "CONGRATULATIONS!";
+            default    : return "Welcome!";
+        }
     }
 
     private void initFrame() {
