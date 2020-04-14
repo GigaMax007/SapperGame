@@ -30,6 +30,7 @@ public class Game {
     }
 
     public void pressLeftButton(Coord coord) {
+        if (gameOver()) return;
         openBox(coord);
         checkWinner();
     }
@@ -74,6 +75,14 @@ public class Game {
     }
 
     public void pressRightButton(Coord coord) {
+        if (gameOver()) return;
         flag.toggleFlagedToBox(coord);
+    }
+
+    private boolean gameOver() {
+        if (gameState == GameState.PLAYED)
+            return false;
+        start();
+        return true;
     }
 }
