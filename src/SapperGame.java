@@ -74,10 +74,14 @@ public class SapperGame extends JFrame {
 
     private String getMessage() {
         switch (game.getGameState()) {
-            case PLAYED: return "Think twice!";
-            case BOMBED: return "YOU LOSE! BIG BA-DA-BOOM!";
-            case WINNER: return "CONGRATULATIONS!";
-            default    : return "Welcome!";
+            case PLAYED:
+                return "Think twice!";
+            case BOMBED:
+                return "YOU LOSE! BIG BA-DA-BOOM!";
+            case WINNER:
+                return "CONGRATULATIONS!";
+            default:
+                return "Welcome!";
         }
     }
 

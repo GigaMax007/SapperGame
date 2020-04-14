@@ -6,7 +6,7 @@ class Flag {
 
     void start() {
         flagMap = new Matrix(Box.CLOSED);
-        countOfClosedBoxes = Ranges.getSize().x *Ranges.getSize().y;
+        countOfClosedBoxes = Ranges.getSize().x * Ranges.getSize().y;
 
     }
 
@@ -16,13 +16,17 @@ class Flag {
 
     public void setOpenedToBox(Coord coord) {
         flagMap.set(coord, Box.OPENED);
-        countOfClosedBoxes --;
+        countOfClosedBoxes--;
     }
 
     public void toggleFlagedToBox(Coord coord) {
         switch (flagMap.get(coord)) {
-            case FLAGED : setClosedToBox(coord); break;
-            case CLOSED : setFlagedToBox(coord); break;
+            case FLAGED:
+                setClosedToBox(coord);
+                break;
+            case CLOSED:
+                setFlagedToBox(coord);
+                break;
         }
     }
 
@@ -44,7 +48,7 @@ class Flag {
 
     void setOpenedToClosedBombBox(Coord coord) {
         if (flagMap.get(coord) == Box.CLOSED)
-        flagMap.set(coord, Box.OPENED);
+            flagMap.set(coord, Box.OPENED);
     }
 
     void setNobombToFlagedSafeBox(Coord coord) {
@@ -53,12 +57,11 @@ class Flag {
     }
 
 
-
     int getCountOfFlagedBoxesAround(Coord coord) {
         int count = 0;
         for (Coord around : Ranges.getCoordsAround(coord)) {
-            if ( flagMap.get(around) == Box.FLAGED)
-                count ++;
+            if (flagMap.get(around) == Box.FLAGED)
+                count++;
         }
         return count;
     }
