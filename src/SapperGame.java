@@ -12,6 +12,8 @@ public class SapperGame extends JFrame {
     private Game game;
 
     private JPanel panel; // создаем переменную типа панель
+    private JLabel label;
+
     private final int COLS = 9; // константа - количество столбцов
     private final int ROWS = 9; // константа - количество строк
     private final int BOMBS = 10; // константа -  количество бомб всего
@@ -25,8 +27,14 @@ public class SapperGame extends JFrame {
         game = new Game(COLS, ROWS, BOMBS);
         game.start();
         setImage();
+        initLabel();
         initPanel();
         initFrame();
+    }
+
+    private void initLabel() {
+        label = new JLabel("Welcome!");
+        add(label, BorderLayout.SOUTH);
     }
 
     private void initPanel() {
@@ -68,9 +76,9 @@ public class SapperGame extends JFrame {
         setTitle("Sapper Game"); // Указываем заголовок
         setResizable(false); // Не нужно изменять размер окна
         setVisible(true); // Чтобы форма была видна
-        setIconImage(getImage("icon")); // устанавливаем иконку программы
         pack(); // Изменяет форму так, чтобы в ней всё поместилось
         setLocationRelativeTo(null); // Устанавливаем окно по центру
+        setIconImage(getImage("icon")); // устанавливаем иконку программы
     }
 
     private void setImage() {
