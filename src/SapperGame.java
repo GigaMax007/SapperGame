@@ -51,6 +51,8 @@ public class SapperGame extends JFrame {
                     game.pressLeftButton(coord);
                 if (e.getButton() == MouseEvent.BUTTON3)
                     game.pressRightButton(coord);
+                if (e.getButton() == MouseEvent.BUTTON2)
+                    game.start(); 
                 panel.repaint();
             }
         });
